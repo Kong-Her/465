@@ -1,0 +1,61 @@
+<!-- Kong's Word Ladder -->
+
+<html>
+<body>
+
+<table border="2"> 
+  <tr>
+    <td>Start:</td>
+    <td><%= $word1 %></td>		
+  </tr>
+<h2> Your guesses </h2>
+<% if !$ary[1].blank? && $ary[1] != $word2 %>
+  <tr>
+    <td> Step 1: </td>
+    <td><%= $ary[1] %></td>		
+  </tr>
+<%end%>
+
+<% if !$ary[2].blank? && $ary[2] != $word2 %>
+  <tr>
+    <td> Step 2: </td>
+    <td><%= $ary[2] %></td>		
+  </tr>
+<%end%>
+
+<% if !$ary[3].blank? && $ary[3] != $word2 %>
+  <tr>
+    <td> Step 3: </td>
+    <td><%= $ary[3] %></td>		
+  </tr>
+<%end%>
+
+<% if !$ary[4].blank? && $ary[4] != $word2%>
+  <tr>
+    <td> Step 4: </td>
+    <td><%= $ary[4] %></td>		
+  </tr>
+<%end%>
+
+<% if !$ary[5].blank? && $ary[5] != $word2 %>
+  <tr>
+    <td> Step 5: </td>
+    <td><%= $ary[5] %></td>		
+  </tr>
+<%end%>
+  <tr>
+    <td>Goal:</td>
+    <td><%= $word2 %></td>		
+  </tr>
+</table>
+
+</body>
+</html>
+<br>
+  <% if $isLegal %>
+  <p> You WIN!!!</p>
+  <% else %>
+  <p> You LOSE!!! </p>
+  <% end %>
+<%= button_to "Play again", root_path, :class => "button", :method => :get %> 
+
