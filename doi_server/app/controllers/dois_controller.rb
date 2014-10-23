@@ -1,25 +1,21 @@
 class DoisController < ApplicationController
   before_action :set_doi, only: [:show, :edit, :update, :destroy]
 
-  # GET /professors
   def index
-    @dois= Doi.all
+    @dois = Doi.all
   end
 
-  # GET /professors/1
   def show
+    @doi = rand(2**50).to_s(32)
   end
 
-  # GET /professors/new
   def new
     @doi = Doi.new
   end
 
-  # GET /professors/1/edit
   def edit
   end
 
-  # POST /professors
   def create
     @doi = Doi.new(doi_params)
 
@@ -30,7 +26,6 @@ class DoisController < ApplicationController
     end
   end
 
-  # PATCH/PUT /professors/1
   def update
     if @doi.update(doi_params)
       redirect_to @doi, notice: 'DOI was successfully updated.'
@@ -39,7 +34,6 @@ class DoisController < ApplicationController
     end
   end
 
-  # DELETE /professors/1
   def destroy
     @doi.destroy
     redirect_to dois_url
