@@ -1,0 +1,22 @@
+<h1>New DOI</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Doi</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dois.each do |doi| %>
+      <tr>
+        <td><%= doi.doi %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New DOI', new_doi_path %>

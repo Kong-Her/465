@@ -1,0 +1,23 @@
+<!-- the following calls the name() function in the Professor model -->
+<h1><%= @doi.doi %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Doi</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @urls.each do |url| %>
+      <tr>
+        <td><%= url.url %></td>
+        <td><%= link_to 'Edit', edit_url_path(rating) %></td>
+        <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

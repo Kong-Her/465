@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>DOI:</strong>
+  <%= @doi.doi%>
+</p>
+
+<%= link_to "Show Urls", doi_urls_path(@doi) %> |
+<%= link_to 'Edit', edit_doi_path(@doi) %> |
+<%= link_to 'Show all DOIs', dois_path %>
