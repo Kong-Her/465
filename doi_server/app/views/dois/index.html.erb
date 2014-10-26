@@ -1,10 +1,9 @@
-<h1>Make DOIs</h1>
+<h1>Listing dois</h1>
 
 <table>
   <thead>
     <tr>
-      <th>URL</th>
-      <th>DOI</th>
+      <th><u>DOI</u></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,9 +12,14 @@
     <% @dois.each do |doi| %>
       <tr>
         <td><%= doi.doi %></td>
+        <td><%= link_to 'Show', doi %></td>
+        <td><%= link_to 'Edit', edit_doi_path(doi) %></td>
+        <td><%= link_to 'Destroy', doi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
 <br>
-<%= link_to 'New DOI', new_doi_path %>
+
+<%= link_to 'New Doi', new_doi_path %>

@@ -1,7 +1,7 @@
 <%= form_for(@doi) do |f| %>
   <% if @doi.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@doi.errors.count, "error") %> prohibited this DOi from being saved:</h2>
+      <h2><%= pluralize(@doi.errors.count, "error") %> prohibited this doi from being saved:</h2>
 
       <ul>
       <% @doi.errors.full_messages.each do |message| %>
@@ -13,8 +13,29 @@
 
   <div class="field">
     <%= f.label :doi %><br>
-    <%= f.text_field :doi%>
+    <%= f.text_field :doi %>
   </div>
+
+
+<%= f.fields_for :urls do |urls_form| %>
+    <h3>New Rating</h3>
+    <div style="margin-left:30px;">
+      <div class="field">
+        <%= urls_form.label :name %><br>
+        <%= urls_form.text_field :name %>
+      </div>
+      <div class="field">
+        <%= urls_form.label :description %><br>
+        <%= urls_form.text_field :description %>
+      </div>
+      <div class="field">
+        <%= urls_form.label :url %><br>
+        <%= urls_form.text_field :url %>
+      </div>
+    </div>
+  <% end %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
