@@ -1,8 +1,7 @@
 class CreateUrls < ActiveRecord::Migration
   def change
     create_table :urls do |t|
-      t.string :name
-      t.string :description
+      t.string :doi
       t.string :url
       t.references :doi, index: true
 
