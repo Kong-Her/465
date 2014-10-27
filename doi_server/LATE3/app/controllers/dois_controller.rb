@@ -1,9 +1,5 @@
 class DoisController < ApplicationController
   before_action :set_doi, only: [:show, :edit, :update, :destroy]
-
-  def get_doi
-    @doi = rand(2**50).to_s(32)
-  end
   # GET /dois
   def index
     @dois = Doi.all

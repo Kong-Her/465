@@ -1,0 +1,1890 @@
+  [1m[36m (15.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (15.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateDois (20141027042904)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  CREATE TABLE "dois" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" varchar(255), "url" varchar(255), "doi" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (8.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141027042904"]]
+  [1m[35m (12.6ms)[0m  commit transaction
+Migrating to CreateUrls (20141027042933)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "urls" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "doi" varchar(255), "url" varchar(255), "doi_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_urls_on_doi_id" ON "urls" ("doi_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141027042933"]]
+  [1m[36m (16.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_urls_on_doi_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_urls_on_doi_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_urls_on_doi_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_urls_on_doi_id' AND type='index'
+[0m
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 04:31:15 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/railties-4.1.6/lib/rails/templates/rails/welcome/index.html.erb (1.3ms)
+Completed 200 OK in 13ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 04:40:34 +0000
+Processing by DoisController#index as HTML
+Completed 500 Internal Server Error in 6ms
+
+ActionView::MissingTemplate (Missing template dois/index, application/index with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/ubuntu/465/doi_server/app/views"
+):
+  actionview (4.1.6) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.1.6) lib/action_view/lookup_context.rb:124:in `find'
+  actionview (4.1.6) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.1.6) lib/action_view/renderer/template_renderer.rb:41:in `determine_template'
+  actionview (4.1.6) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.1.6) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.6) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.6) lib/action_view/rendering.rb:99:in `_render_template'
+  actionpack (4.1.6) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.1.6) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.6) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.6) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.6) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.6) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.1.6) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.1.6) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.1.6) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.1.6) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.6) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.6) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.6) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.6) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:149:in `block in halting_and_conditional'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:229:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:229:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:86:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.6) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.6) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.6) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.6) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.6) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.6) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.6) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.6) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.6) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.6) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (2.0.0) lib/better_errors/middleware.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.3) lib/quiet_assets.rb:23:in `call_with_quiet_assets'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (0.4ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 04:43:27 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.3ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 317ms (Views: 315.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 04:55:29 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 25ms (Views: 24.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 04:55:33 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (15.8ms)
+  Rendered dois/new.html.erb within layouts/application (18.4ms)
+Completed 500 Internal Server Error in 21ms
+
+ActionView::Template::Error (undefined method `dsecription' for #<Doi:0x00000004a85d50>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :description %><br>
+    20:     <%= f.text_field :dsecription %>
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :url %><br>
+  app/views/dois/_form.html.erb:20:in `block in _app_views_dois__form_html_erb___1207048840266264406_39442620'
+  app/views/dois/_form.html.erb:1:in `_app_views_dois__form_html_erb___1207048840266264406_39442620'
+  app/views/dois/new.html.erb:3:in `_app_views_dois_new_html_erb___2253752549024037399_39090340'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.7ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 04:55:33 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (3.1ms)
+  Rendered dois/new.html.erb within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `dsecription' for #<Doi:0x0000000559fd30>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :description %><br>
+    20:     <%= f.text_field :dsecription %>
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :url %><br>
+  app/views/dois/_form.html.erb:20:in `block in _app_views_dois__form_html_erb___1207048840266264406_45916000'
+  app/views/dois/_form.html.erb:1:in `_app_views_dois__form_html_erb___1207048840266264406_45916000'
+  app/views/dois/new.html.erb:3:in `_app_views_dois_new_html_erb___2253752549024037399_44888100'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.4ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 04:55:52 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.6ms)
+  Rendered dois/new.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `dsecription' for #<Doi:0x00000005d1baf0>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :description %><br>
+    20:     <%= f.text_field :dsecription %>
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :url %><br>
+  app/views/dois/_form.html.erb:20:in `block in _app_views_dois__form_html_erb___1207048840266264406_39442620'
+  app/views/dois/_form.html.erb:1:in `_app_views_dois__form_html_erb___1207048840266264406_39442620'
+  app/views/dois/new.html.erb:3:in `_app_views_dois_new_html_erb___2253752549024037399_39090340'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.7ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 04:55:52 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.5ms)
+  Rendered dois/new.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `dsecription' for #<Doi:0x00000005e7fe00>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :description %><br>
+    20:     <%= f.text_field :dsecription %>
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :url %><br>
+  app/views/dois/_form.html.erb:20:in `block in _app_views_dois__form_html_erb___1207048840266264406_45916000'
+  app/views/dois/_form.html.erb:1:in `_app_views_dois__form_html_erb___1207048840266264406_45916000'
+  app/views/dois/new.html.erb:3:in `_app_views_dois_new_html_erb___2253752549024037399_44888100'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.2ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 04:56:18 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.4ms)
+  Rendered dois/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 28ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 04:57:15 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"name"=>"news", "description"=>"cnn", "url"=>"www.cnn.com"}, "commit"=>"Create Doi"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 04:57:15.829756"], ["description", "cnn"], ["name", "news"], ["updated_at", "2014-10-27 04:57:15.829756"], ["url", "www.cnn.com"]]
+  [1m[35m (6.9ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois/1
+Completed 302 Found in 11ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/dois/1" for 132.241.217.240 at 2014-10-27 04:57:15 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoi Load (0.2ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUrl Load (0.2ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 1]]
+  Rendered dois/show.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 36ms (Views: 34.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 04:57:18 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 26ms (Views: 24.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 04:57:31 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 26ms (Views: 25.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 04:58:01 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 27ms (Views: 26.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 05:01:16 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.3ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 62ms (Views: 59.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/dois/1/edit" for 132.241.217.240 at 2014-10-27 05:01:18 +0000
+Processing by DoisController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoi Load (0.2ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered dois/_form.html.erb (2.6ms)
+  Rendered dois/edit.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 32ms (Views: 30.2ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/dois/1" for 132.241.217.240 at 2014-10-27 05:01:22 +0000
+Processing by DoisController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"name"=>"news", "description"=>"cnn", "url"=>"www.cnn.com"}, "commit"=>"Update Doi", "id"=>"1"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois/1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/dois/1" for 132.241.217.240 at 2014-10-27 05:01:22 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUrl Load (0.2ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 1]]
+  Rendered dois/show.html.erb within layouts/application (9.4ms)
+Completed 500 Internal Server Error in 19ms
+
+ActionView::Template::Error (undefined local variable or method `rating' for #<#<Class:0x00000005bd9390>:0x00000005d8f2c0>):
+    16: 
+    17:   <tbody>
+    18:     <% @doi.urls.each do |url| %>
+    19:       <% if !rating.new_record? %>
+    20:       <tr>
+    21:         <td><%= url.name %></td>
+    22:         <td><%= url.description %></td>
+  app/views/dois/show.html.erb:19:in `block in _app_views_dois_show_html_erb___2550197843867168415_49048740'
+  app/views/dois/show.html.erb:18:in `_app_views_dois_show_html_erb___2550197843867168415_49048740'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.6ms)
+
+
+Started GET "/dois/1/edit" for 132.241.217.240 at 2014-10-27 05:01:48 +0000
+Processing by DoisController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered dois/_form.html.erb (2.0ms)
+  Rendered dois/edit.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 30ms (Views: 28.3ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/dois/1" for 132.241.217.240 at 2014-10-27 05:01:49 +0000
+Processing by DoisController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"name"=>"news", "description"=>"cnn", "url"=>"www.cnn.com"}, "commit"=>"Update Doi", "id"=>"1"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois/1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/dois/1" for 132.241.217.240 at 2014-10-27 05:01:50 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 1]]
+  Rendered urls/_form.html.erb (3.6ms)
+  Rendered dois/show.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 34ms (Views: 32.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/1" for 132.241.217.240 at 2014-10-27 05:11:54 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 1]]
+  Rendered urls/_form.html.erb (2.1ms)
+  Rendered dois/show.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 40ms (Views: 27.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/dois/1" for 132.241.217.240 at 2014-10-27 05:15:57 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 1]]
+  Rendered urls/_form.html.erb (1.7ms)
+  Rendered dois/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 27ms (Views: 24.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 05:16:02 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 24ms (Views: 23.3ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/dois/1" for 132.241.217.240 at 2014-10-27 05:16:06 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"1"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUrl Load (0.0ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "dois" WHERE "dois"."id" = ?[0m  [["id", 1]]
+  [1m[35m (6.8ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 10ms (ActiveRecord: 7.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:16:06 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.2ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 24ms (Views: 23.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 05:16:07 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (13.0ms)
+  Rendered dois/new.html.erb within layouts/application (13.6ms)
+Completed 500 Internal Server Error in 17ms
+
+ActionView::Template::Error (undefined local variable or method `ratings_form' for #<#<Class:0x00000004fc9b18>:0x00000005a67610>):
+    37:         <%= urls_form.text_field :url %>
+    38:       </div>
+    39:       <div class="field">
+    40:         <%= ratings_form.label :doi %><br>
+    41:         <%= ratings_form.text_field :doi  %>
+    42:       </div>
+    43:     </div>
+  app/views/dois/_form.html.erb:40:in `block (2 levels) in _app_views_dois__form_html_erb___1207048840266264406_47385920'
+  app/views/dois/_form.html.erb:32:in `block in _app_views_dois__form_html_erb___1207048840266264406_47385920'
+  app/views/dois/_form.html.erb:1:in `_app_views_dois__form_html_erb___1207048840266264406_47385920'
+  app/views/dois/new.html.erb:3:in `_app_views_dois_new_html_erb___2253752549024037399_39090340'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (10.2ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 05:16:07 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (11.7ms)
+  Rendered dois/new.html.erb within layouts/application (12.2ms)
+Completed 500 Internal Server Error in 14ms
+
+ActionView::Template::Error (undefined local variable or method `ratings_form' for #<#<Class:0x00000004fc9b18>:0x00000004f8cb78>):
+    37:         <%= urls_form.text_field :url %>
+    38:       </div>
+    39:       <div class="field">
+    40:         <%= ratings_form.label :doi %><br>
+    41:         <%= ratings_form.text_field :doi  %>
+    42:       </div>
+    43:     </div>
+  app/views/dois/_form.html.erb:40:in `block (2 levels) in _app_views_dois__form_html_erb___1207048840266264406_41688420'
+  app/views/dois/_form.html.erb:32:in `block in _app_views_dois__form_html_erb___1207048840266264406_41688420'
+  app/views/dois/_form.html.erb:1:in `_app_views_dois__form_html_erb___1207048840266264406_41688420'
+  app/views/dois/new.html.erb:3:in `_app_views_dois_new_html_erb___2253752549024037399_44888100'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.8ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 05:16:45 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (3.7ms)
+  Rendered dois/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 34ms (Views: 32.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 05:17:07 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.7ms)
+  Rendered dois/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 31ms (Views: 29.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 05:17:37 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"u47ugmdsio", "name"=>"good news", "description"=>"us news", "url"=>"cnn.com"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 05:17:37.714707"], ["description", "us news"], ["name", "good news"], ["updated_at", "2014-10-27 05:17:37.714707"], ["url", "cnn.com"]]
+  [1m[35m (11.1ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois/2
+Completed 302 Found in 14ms (ActiveRecord: 11.4ms)
+
+
+Started GET "/dois/2" for 132.241.217.240 at 2014-10-27 05:17:37 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 2]]
+  Rendered urls/_form.html.erb (1.6ms)
+  Rendered dois/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 29ms (Views: 27.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:17:42 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 28ms (Views: 27.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 05:19:37 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.1ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 26ms (Views: 25.6ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/dois/2" for 132.241.217.240 at 2014-10-27 05:19:40 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"2"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUrl Load (0.0ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "dois" WHERE "dois"."id" = ?  [["id", 2]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 10ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:19:40 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 25ms (Views: 24.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 05:19:42 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.7ms)
+  Rendered dois/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 28ms (Views: 27.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 05:19:48 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"t3ovu4bmk9", "name"=>"abc", "description"=>"news", "url"=>"cnn.com"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-27 05:19:48.395345"], ["description", "news"], ["name", "abc"], ["updated_at", "2014-10-27 05:19:48.395345"], ["url", "cnn.com"]]
+  [1m[36m (8.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois/3
+Completed 302 Found in 11ms (ActiveRecord: 8.8ms)
+
+
+Started GET "/dois/3" for 132.241.217.240 at 2014-10-27 05:19:48 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUrl Load (0.0ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 3]]
+  Rendered urls/_form.html.erb (1.6ms)
+  Rendered dois/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 28ms (Views: 25.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:19:50 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 34ms (Views: 33.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:21:47 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 26ms (Views: 25.5ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/dois/3" for 132.241.217.240 at 2014-10-27 05:21:50 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"3"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUrl Load (0.0ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 3]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "dois" WHERE "dois"."id" = ?[0m  [["id", 3]]
+  [1m[35m (6.8ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 10ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:21:50 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 27ms (Views: 26.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 05:21:51 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.0ms)
+  Rendered dois/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 30ms (Views: 28.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 05:21:57 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"r3l4atetrc", "name"=>"asdf", "description"=>"asdf", "url"=>"asdf"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 05:21:57.330465"], ["description", "asdf"], ["name", "asdf"], ["updated_at", "2014-10-27 05:21:57.330465"], ["url", "asdf"]]
+  [1m[35m (7.2ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois/4
+Completed 302 Found in 10ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/dois/4" for 132.241.217.240 at 2014-10-27 05:21:57 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mUrl Load (0.0ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 4]]
+  Rendered dois/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 30ms (Views: 28.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/4" for 132.241.217.240 at 2014-10-27 05:23:55 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mDoi Load (0.2ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mUrl Load (0.1ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 4]]
+  Rendered dois/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 75ms (Views: 44.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/dois/4" for 132.241.217.240 at 2014-10-27 05:24:25 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mUrl Load (0.1ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 4]]
+  Rendered dois/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 28ms (Views: 25.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:24:50 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.3ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 27ms (Views: 26.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:25:41 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.3ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 80ms (Views: 75.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 05:25:43 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (11.1ms)
+  Rendered dois/new.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 44ms (Views: 37.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 05:25:51 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"ug5mqt652c", "name"=>"asdf", "description"=>"kuv", "url"=>"abbb.com"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 05:25:51.339365"], ["description", "kuv"], ["name", "asdf"], ["updated_at", "2014-10-27 05:25:51.339365"], ["url", "abbb.com"]]
+  [1m[35m (8.5ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois/5
+Completed 302 Found in 12ms (ActiveRecord: 8.9ms)
+
+
+Started GET "/dois/5" for 132.241.217.240 at 2014-10-27 05:25:51 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered dois/show.html.erb within layouts/application (2.4ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `doi' for "f5sfiav01j":String):
+    1: <p id="notice"><%= notice %></p>
+    2: <h2><%= @doi.doi %></h2>
+    3: <h1><%= @doi.name%>'s Urls</h1>
+    4: 
+    5: <!-- this table use to be in app/views/urls/index.html.erb -->
+  app/views/dois/show.html.erb:2:in `_app_views_dois_show_html_erb__1697375925241829252_44610340'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.7ms)
+
+
+Started GET "/dois/5" for 132.241.217.240 at 2014-10-27 05:26:23 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered dois/show.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `name' for "v4nqcm63g1":String):
+    1: <p id="notice"><%= notice %></p>
+    2: <h1><%= @doi.name%>'s Urls</h1>
+    3: <h2><%= @doi %></h2>
+    4: 
+    5: <!-- this table use to be in app/views/urls/index.html.erb -->
+  app/views/dois/show.html.erb:2:in `_app_views_dois_show_html_erb__1697375925241829252_50220360'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.3ms)
+
+
+Started GET "/dois/5" for 132.241.217.240 at 2014-10-27 05:27:03 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 5]]
+  Rendered dois/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 38ms (Views: 24.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 05:27:31 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.2ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 26ms (Views: 24.9ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/dois/4" for 132.241.217.240 at 2014-10-27 05:27:35 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"4"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 4]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "dois" WHERE "dois"."id" = ?[0m  [["id", 4]]
+  [1m[35m (6.7ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 10ms (ActiveRecord: 7.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:27:35 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 26ms (Views: 25.1ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/dois/5" for 132.241.217.240 at 2014-10-27 05:27:37 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"5"}
+  [1m[35mDoi Load (0.2ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 5]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "dois" WHERE "dois"."id" = ?[0m  [["id", 5]]
+  [1m[35m (7.0ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 10ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:27:37 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 25ms (Views: 23.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:29:15 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.1ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 25ms (Views: 24.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:29:17 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 40ms (Views: 39.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:29:53 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 28ms (Views: 27.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 05:29:55 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.1ms)
+  Rendered dois/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 30ms (Views: 28.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 05:30:04 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"jc023du1c7", "name"=>"news", "description"=>"abs", "url"=>"cnn.com"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-27 05:30:04.606847"], ["description", "abs"], ["name", "news"], ["updated_at", "2014-10-27 05:30:04.606847"], ["url", "cnn.com"]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois/6
+Completed 302 Found in 11ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/dois/6" for 132.241.217.240 at 2014-10-27 05:30:04 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mUrl Load (0.1ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 6]]
+  Rendered dois/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 28ms (Views: 25.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:30:07 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.1ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `doi' for "cnn.com":String):
+    17:         <td><%= doi.name %></td>
+    18:         <td><%= doi.description %></td>
+    19:         <td><%= doi.url %></td>
+    20:         <td><%= doi.url.doi %></td>
+    21:         <td><%= link_to 'Show', doi %></td>
+    22:         <td><%= link_to 'Edit', edit_doi_path(doi) %></td>
+    23:         <td><%= link_to 'Destroy', doi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  app/views/dois/index.html.erb:20:in `block in _app_views_dois_index_html_erb__590687013312399039_42652240'
+  app/views/dois/index.html.erb:15:in `_app_views_dois_index_html_erb__590687013312399039_42652240'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.4ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:30:07 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (2.0ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `doi' for "cnn.com":String):
+    17:         <td><%= doi.name %></td>
+    18:         <td><%= doi.description %></td>
+    19:         <td><%= doi.url %></td>
+    20:         <td><%= doi.url.doi %></td>
+    21:         <td><%= link_to 'Show', doi %></td>
+    22:         <td><%= link_to 'Edit', edit_doi_path(doi) %></td>
+    23:         <td><%= link_to 'Destroy', doi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  app/views/dois/index.html.erb:20:in `block in _app_views_dois_index_html_erb__590687013312399039_47706520'
+  app/views/dois/index.html.erb:15:in `_app_views_dois_index_html_erb__590687013312399039_47706520'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.8ms)
+
+
+Started GET "/dois/6/edit" for 132.241.217.240 at 2014-10-27 05:30:10 +0000
+Processing by DoisController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 6]]
+  Rendered dois/_form.html.erb (2.3ms)
+  Rendered dois/edit.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 31ms (Views: 29.9ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/dois/6" for 132.241.217.240 at 2014-10-27 05:30:17 +0000
+Processing by DoisController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"oepgngk185", "name"=>"news", "description"=>"abs", "url"=>"cnn.com"}, "commit"=>"Update Doi", "id"=>"6"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 6]]
+Unpermitted parameters: doi
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois/6
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/dois/6" for 132.241.217.240 at 2014-10-27 05:30:17 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mUrl Load (0.1ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 6]]
+  Rendered dois/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 26ms (Views: 24.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:30:30 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 27ms (Views: 25.9ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/dois/6" for 132.241.217.240 at 2014-10-27 05:35:57 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"6"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUrl Load (0.1ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 6]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "dois" WHERE "dois"."id" = ?  [["id", 6]]
+  [1m[36m (7.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 20ms (ActiveRecord: 8.5ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:35:57 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (3.9ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (26.0ms)
+Completed 500 Internal Server Error in 32ms
+
+ActionView::Template::Error (undefined local variable or method `query_path' for #<#<Class:0x00000005c02e20>:0x00000005c02498>):
+    26:   </tbody>
+    27: </table>
+    28: 
+    29: <%= form_tag(query_path, method: "get") do  %>
+    30:     <%= label_tag(:query, "Search DOI: ") %>
+    31:     <%= text_field_tag(:query) %>
+    32:     <%= submit_tag("Lookup") %>
+  app/views/dois/index.html.erb:29:in `_app_views_dois_index_html_erb__590687013312399039_48236660'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (15.9ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 05:36:00 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (8.2ms)
+Completed 500 Internal Server Error in 10ms
+
+ActionView::Template::Error (undefined local variable or method `query_path' for #<#<Class:0x00000005c02e20>:0x00000005e3e838>):
+    26:   </tbody>
+    27: </table>
+    28: 
+    29: <%= form_tag(query_path, method: "get") do  %>
+    30:     <%= label_tag(:query, "Search DOI: ") %>
+    31:     <%= text_field_tag(:query) %>
+    32:     <%= submit_tag("Lookup") %>
+  app/views/dois/index.html.erb:29:in `_app_views_dois_index_html_erb__590687013312399039_48236660'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (9.2ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 05:36:05 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.1ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (9.3ms)
+Completed 500 Internal Server Error in 11ms
+
+ActionView::Template::Error (undefined local variable or method `query_path' for #<#<Class:0x00000005c02e20>:0x0000000609ece0>):
+    26:   </tbody>
+    27: </table>
+    28: 
+    29: <%= form_tag(query_path, method: "get") do  %>
+    30:     <%= label_tag(:query, "Search DOI: ") %>
+    31:     <%= text_field_tag(:query) %>
+    32:     <%= submit_tag("Lookup") %>
+  app/views/dois/index.html.erb:29:in `_app_views_dois_index_html_erb__590687013312399039_48236660'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.9ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 05:55:08 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.3ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (9.3ms)
+Completed 500 Internal Server Error in 14ms
+
+ActionView::Template::Error (undefined local variable or method `query_path' for #<#<Class:0x0000000608d198>:0x0000000608c7e8>):
+    26:   </tbody>
+    27: </table>
+    28: 
+    29: <%= form_tag(query_path, method: "get") do  %>
+    30:     <%= label_tag(:query, "Search DOI: ") %>
+    31:     <%= text_field_tag(:query) %>
+    32:     <%= submit_tag("Lookup") %>
+  app/views/dois/index.html.erb:29:in `_app_views_dois_index_html_erb__590687013312399039_50600380'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (9.2ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 05:56:13 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 29ms (Views: 25.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/query?utf8=%E2%9C%93&query=asdf&commit=Lookup" for 132.241.217.240 at 2014-10-27 05:56:46 +0000
+
+ActionController::RoutingError (uninitialized constant DoiController):
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:238:in `const_get'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:238:in `block in constantize'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `constantize'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.6) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (2.0.0) lib/better_errors/middleware.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.3) lib/quiet_assets.rb:23:in `call_with_quiet_assets'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (20.5ms)
+
+
+Started GET "/query?utf8=%E2%9C%93&query=asdf&commit=Lookup" for 132.241.217.240 at 2014-10-27 05:57:23 +0000
+
+ActionController::RoutingError (uninitialized constant HomeController):
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:238:in `const_get'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:238:in `block in constantize'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `constantize'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.6) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (2.0.0) lib/better_errors/middleware.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.3) lib/quiet_assets.rb:23:in `call_with_quiet_assets'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (19.0ms)
+
+
+Started GET "/query?utf8=%E2%9C%93&query=asdf&commit=Lookup" for 132.241.217.240 at 2014-10-27 05:57:46 +0000
+
+ActionController::RoutingError (uninitialized constant HomeController):
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:238:in `const_get'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:238:in `block in constantize'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `constantize'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.6) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (2.0.0) lib/better_errors/middleware.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.3) lib/quiet_assets.rb:23:in `call_with_quiet_assets'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (19.2ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 05:59:08 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (4.9ms)
+  Rendered dois/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 40ms (Views: 31.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 05:59:15 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"flftdaolo7", "name"=>"abc", "description"=>"cde", "url"=>"abc.com"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-27 05:59:15.565957"], ["description", "cde"], ["name", "abc"], ["updated_at", "2014-10-27 05:59:15.565957"], ["url", "abc.com"]]
+  [1m[36m (11.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois/7
+Completed 302 Found in 15ms (ActiveRecord: 12.0ms)
+
+
+Started GET "/dois/7" for 132.241.217.240 at 2014-10-27 05:59:15 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mDoi Load (0.2ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 7]]
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `each' for #<Doi:0x00000003c85cf0>):
+  app/controllers/dois_controller.rb:12:in `show'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.1ms)
+
+
+Started GET "/dois/7" for 132.241.217.240 at 2014-10-27 06:01:51 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 7]]
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `each' for #<Doi:0x00000005744618>):
+  app/controllers/dois_controller.rb:12:in `show'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.4ms)
+
+
+Started GET "/dois/7" for 132.241.217.240 at 2014-10-27 06:17:37 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mDoi Load (0.2ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 7]]
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `each' for #<Doi:0x000000053ffa98>):
+  app/controllers/dois_controller.rb:12:in `show'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.2ms)
+
+
+Started GET "/dois/7" for 132.241.217.240 at 2014-10-27 06:17:58 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35mUrl Load (0.2ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 7]]
+  Rendered dois/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 85ms (Views: 46.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:18:02 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.2ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 35ms (Views: 34.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/query?utf8=%E2%9C%93&query=h&commit=Lookup" for 132.241.217.240 at 2014-10-27 06:18:07 +0000
+
+ActionController::RoutingError (uninitialized constant HomeController):
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:238:in `const_get'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:238:in `block in constantize'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `constantize'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.6) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (2.0.0) lib/better_errors/middleware.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.3) lib/quiet_assets.rb:23:in `call_with_quiet_assets'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.7ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (20.3ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 06:19:59 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (7.5ms)
+  Rendered dois/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 59ms (Views: 54.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 06:20:07 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"63q3pgt8l7", "name"=>"asdf", "description"=>"asd", "url"=>"sd"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 06:20:07.038216"], ["description", "asd"], ["name", "asdf"], ["updated_at", "2014-10-27 06:20:07.038216"], ["url", "sd"]]
+  [1m[35m (8.2ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois/8
+Completed 302 Found in 11ms (ActiveRecord: 8.5ms)
+
+
+Started GET "/dois/8" for 132.241.217.240 at 2014-10-27 06:20:07 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 8]]
+  Rendered dois/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 27ms (Views: 25.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:20:09 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.2ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `doi' for nil:NilClass):
+    17:         <td><%= doi.name %></td>
+    18:         <td><%= doi.description %></td>
+    19:         <td><%= doi.url %></td>
+    20:         <td><%= @doi.doi %></td>
+    21:         <td><%= link_to 'Show', doi %></td>
+    22:         <td><%= link_to 'Edit', edit_doi_path(doi) %></td>
+    23:         <td><%= link_to 'Destroy', doi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  app/views/dois/index.html.erb:20:in `block in _app_views_dois_index_html_erb__590687013312399039_47439740'
+  app/views/dois/index.html.erb:15:in `_app_views_dois_index_html_erb__590687013312399039_47439740'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.7ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:20:09 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `doi' for nil:NilClass):
+    17:         <td><%= doi.name %></td>
+    18:         <td><%= doi.description %></td>
+    19:         <td><%= doi.url %></td>
+    20:         <td><%= @doi.doi %></td>
+    21:         <td><%= link_to 'Show', doi %></td>
+    22:         <td><%= link_to 'Edit', edit_doi_path(doi) %></td>
+    23:         <td><%= link_to 'Destroy', doi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  app/views/dois/index.html.erb:20:in `block in _app_views_dois_index_html_erb__590687013312399039_44331120'
+  app/views/dois/index.html.erb:15:in `_app_views_dois_index_html_erb__590687013312399039_44331120'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.6ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:22:09 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 29ms (Views: 27.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/7/edit" for 132.241.217.240 at 2014-10-27 06:22:29 +0000
+Processing by DoisController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 7]]
+  Rendered dois/_form.html.erb (2.2ms)
+  Rendered dois/edit.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 29ms (Views: 27.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/7/edit" for 132.241.217.240 at 2014-10-27 06:28:07 +0000
+Processing by DoisController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 7]]
+  Rendered dois/_form.html.erb (2.7ms)
+  Rendered dois/edit.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 30ms (Views: 28.5ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/dois/7" for 132.241.217.240 at 2014-10-27 06:28:09 +0000
+Processing by DoisController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"1vda7vhmk5", "name"=>"abc", "description"=>"cde", "url"=>"abc.com"}, "commit"=>"Update Doi", "id"=>"7"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 7]]
+Unpermitted parameters: doi
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois/7
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/dois/7" for 132.241.217.240 at 2014-10-27 06:28:09 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 7]]
+  Rendered dois/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 27ms (Views: 25.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/7/edit" for 132.241.217.240 at 2014-10-27 06:28:11 +0000
+Processing by DoisController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 7]]
+  Rendered dois/_form.html.erb (2.0ms)
+  Rendered dois/edit.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 32ms (Views: 30.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:28:12 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 30ms (Views: 28.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:29:23 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.2ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 26ms (Views: 25.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/query?utf8=%E2%9C%93&query=sadf&commit=Lookup" for 132.241.217.240 at 2014-10-27 06:29:26 +0000
+
+ActionController::RoutingError (uninitialized constant HomeController):
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:238:in `const_get'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:238:in `block in constantize'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `constantize'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.6) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (2.0.0) lib/better_errors/middleware.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.0.3) lib/quiet_assets.rb:23:in `call_with_quiet_assets'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ubuntu/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (19.6ms)
+
+
+Started DELETE "/dois/7" for 132.241.217.240 at 2014-10-27 06:29:29 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"7"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUrl Load (0.0ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 7]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "dois" WHERE "dois"."id" = ?[0m  [["id", 7]]
+  [1m[35m (5.7ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 9ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:29:29 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 26ms (Views: 25.9ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/dois/8" for 132.241.217.240 at 2014-10-27 06:29:31 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"8"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 8]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "dois" WHERE "dois"."id" = ?[0m  [["id", 8]]
+  [1m[35m (6.9ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 10ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:29:31 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 28ms (Views: 26.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 06:29:53 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.0ms)
+  Rendered dois/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 30ms (Views: 29.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 06:29:57 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"epl0c63fb8", "name"=>"adsf", "description"=>"asdf", "url"=>"dsafdfs"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 06:29:57.281139"], ["description", "asdf"], ["name", "adsf"], ["updated_at", "2014-10-27 06:29:57.281139"], ["url", "dsafdfs"]]
+  [1m[35m (5.6ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois/9
+Completed 302 Found in 8ms (ActiveRecord: 5.8ms)
+
+
+Started GET "/dois/9" for 132.241.217.240 at 2014-10-27 06:29:57 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 9]]
+  Rendered dois/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 28ms (Views: 26.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois/9/edit" for 132.241.217.240 at 2014-10-27 06:30:00 +0000
+Processing by DoisController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 9]]
+  Rendered dois/_form.html.erb (13.6ms)
+  Rendered dois/edit.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 220ms (Views: 207.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/9" for 132.241.217.240 at 2014-10-27 06:30:05 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 9]]
+  [1m[36mUrl Load (0.1ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 9]]
+  Rendered dois/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 27ms (Views: 25.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:30:07 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.1ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 32ms (Views: 31.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/9/edit" for 132.241.217.240 at 2014-10-27 06:30:08 +0000
+Processing by DoisController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 9]]
+  Rendered dois/_form.html.erb (2.0ms)
+  Rendered dois/edit.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 29ms (Views: 27.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:31:52 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.1ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 30ms (Views: 29.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/9" for 132.241.217.240 at 2014-10-27 06:31:55 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 9]]
+  Rendered dois/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 29ms (Views: 27.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/9" for 132.241.217.240 at 2014-10-27 06:32:34 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 9]]
+  Rendered dois/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 30ms (Views: 28.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:32:37 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 28ms (Views: 27.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 06:32:43 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.0ms)
+  Rendered dois/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 29ms (Views: 28.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 06:32:48 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"n3onps3rhd", "name"=>"adsf", "description"=>"sdsa", "url"=>"dfs"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 06:32:48.470036"], ["description", "sdsa"], ["name", "adsf"], ["updated_at", "2014-10-27 06:32:48.470036"], ["url", "dfs"]]
+  [1m[35m (5.9ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois/10
+Completed 302 Found in 9ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/dois/10" for 132.241.217.240 at 2014-10-27 06:32:48 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mUrl Load (0.0ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 10]]
+  Rendered dois/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 27ms (Views: 25.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:33:01 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 28ms (Views: 27.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 06:33:56 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.0ms)
+  Rendered dois/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 29ms (Views: 27.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 06:33:57 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"u18jrkslsk", "name"=>"", "description"=>"", "url"=>""}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  Rendered dois/_form.html.erb (3.7ms)
+  Rendered dois/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 39ms (Views: 36.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:33:59 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.1ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 27ms (Views: 26.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/10" for 132.241.217.240 at 2014-10-27 06:34:01 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mUrl Load (0.0ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 10]]
+  Rendered dois/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 29ms (Views: 26.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/10" for 132.241.217.240 at 2014-10-27 06:34:33 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 10]]
+  Rendered dois/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 28ms (Views: 26.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/10" for 132.241.217.240 at 2014-10-27 06:34:58 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 10]]
+  Rendered dois/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 93ms (Views: 83.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:36:37 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.2ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 29ms (Views: 28.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 06:36:40 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.1ms)
+  Rendered dois/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 29ms (Views: 28.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 06:36:44 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"pga90drull", "name"=>"kj;o", "description"=>"lkjl;", "url"=>"kljkl;j"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 06:36:44.425850"], ["description", "lkjl;"], ["name", "kj;o"], ["updated_at", "2014-10-27 06:36:44.425850"], ["url", "kljkl;j"]]
+  [1m[35m (5.7ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois/11
+Completed 302 Found in 9ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/dois/11" for 132.241.217.240 at 2014-10-27 06:36:44 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 11]]
+  Rendered dois/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 28ms (Views: 26.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/11/edit" for 132.241.217.240 at 2014-10-27 06:42:53 +0000
+Processing by DoisController#edit as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 11]]
+  Rendered dois/_form.html.erb (2.2ms)
+  Rendered dois/edit.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 30ms (Views: 28.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/11" for 132.241.217.240 at 2014-10-27 06:45:19 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 11]]
+  [1m[36mUrl Load (0.1ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 11]]
+  Rendered dois/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 33ms (Views: 31.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 06:45:23 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 28ms (Views: 27.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 06:45:24 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.0ms)
+  Rendered dois/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 29ms (Views: 28.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 06:45:29 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"kgdbn720eh", "name"=>"sdaf", "description"=>"f", "url"=>"f"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-27 06:45:29.463690"], ["description", "f"], ["name", "sdaf"], ["updated_at", "2014-10-27 06:45:29.463690"], ["url", "f"]]
+  [1m[36m (6.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois/12
+Completed 302 Found in 10ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/dois/12" for 132.241.217.240 at 2014-10-27 06:45:29 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 12]]
+  [1m[36mUrl Load (0.0ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 12]]
+  Rendered dois/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 29ms (Views: 27.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 06:47:41 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.1ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 30ms (Views: 28.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 06:47:42 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 28ms (Views: 27.7ms | ActiveRecord: 0.1ms)
