@@ -1888,3 +1888,270 @@ Processing by DoisController#index as HTML
   [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
   Rendered dois/index.html.erb within layouts/application (2.5ms)
 Completed 200 OK in 28ms (Views: 27.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 20:28:32 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 65ms (Views: 53.1ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/dois/9" for 132.241.217.240 at 2014-10-27 20:28:35 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"9"}
+  [1m[36mDoi Load (0.2ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUrl Load (0.2ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 9]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "dois" WHERE "dois"."id" = ?  [["id", 9]]
+  [1m[36m (9.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 25ms (ActiveRecord: 10.3ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 20:28:35 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 48ms (Views: 46.6ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/dois/10" for 132.241.217.240 at 2014-10-27 20:28:36 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"10"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUrl Load (0.1ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 10]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "dois" WHERE "dois"."id" = ?  [["id", 10]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 9ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 20:28:37 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 27ms (Views: 26.3ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/dois/11" for 132.241.217.240 at 2014-10-27 20:28:38 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"11"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUrl Load (0.1ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 11]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "dois" WHERE "dois"."id" = ?  [["id", 11]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 10ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 20:28:38 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.1ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 27ms (Views: 26.1ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/dois/12" for 132.241.217.240 at 2014-10-27 20:28:41 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"12"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUrl Load (0.1ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 12]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "dois" WHERE "dois"."id" = ?  [["id", 12]]
+  [1m[36m (7.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 10ms (ActiveRecord: 7.8ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 20:28:41 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 27ms (Views: 26.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 20:28:43 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (12.0ms)
+  Rendered dois/new.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 46ms (Views: 40.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 20:28:53 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"r0bpfejkl7", "name"=>"daily", "description"=>"news", "url"=>"cnn.com"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-27 20:28:53.610157"], ["description", "news"], ["name", "daily"], ["updated_at", "2014-10-27 20:28:53.610157"], ["url", "cnn.com"]]
+  [1m[36m (6.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois/13
+Completed 302 Found in 11ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/dois/13" for 132.241.217.240 at 2014-10-27 20:28:53 +0000
+Processing by DoisController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mDoi Load (0.1ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 13]]
+  [1m[36mUrl Load (0.1ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 13]]
+  Rendered dois/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 28ms (Views: 26.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 20:28:55 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.2ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 29ms (Views: 27.7ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/dois/13" for 132.241.217.240 at 2014-10-27 20:30:15 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"13"}
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1[0m  [["id", 13]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUrl Load (0.1ms)[0m  [1mSELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?[0m  [["doi_id", 13]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "dois" WHERE "dois"."id" = ?  [["id", 13]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 18ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 20:30:15 +0000
+Processing by DoisController#index as HTML
+  [1m[35mDoi Load (0.1ms)[0m  SELECT "dois".* FROM "dois"
+  Rendered dois/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 27ms (Views: 25.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 20:30:17 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.4ms)
+  Rendered dois/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 86ms (Views: 81.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 20:30:24 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"ra80a67ci0", "name"=>"us", "description"=>"daily news", "url"=>"cnn.com"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-27 20:30:24.930858"], ["description", "daily news"], ["name", "us"], ["updated_at", "2014-10-27 20:30:24.930858"], ["url", "cnn.com"]]
+  [1m[36m (6.3ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 10ms
+
+NoMethodError (undefined method `save' for "fdfd8o44fs":String):
+  app/controllers/dois_controller.rb:30:in `create'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.8ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 20:30:43 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"ra80a67ci0", "name"=>"us", "description"=>"daily news", "url"=>"cnn.com"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 20:30:43.071413"], ["description", "daily news"], ["name", "us"], ["updated_at", "2014-10-27 20:30:43.071413"], ["url", "cnn.com"]]
+  [1m[35m (8.1ms)[0m  commit transaction
+Completed 500 Internal Server Error in 21ms
+
+NameError (undefined local variable or method `doi' for #<DoisController:0x000000055d0a48>):
+  app/controllers/dois_controller.rb:30:in `create'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.3ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 20:30:50 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.2ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 27ms (Views: 25.9ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/dois/15" for 132.241.217.240 at 2014-10-27 20:30:55 +0000
+Processing by DoisController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "id"=>"15"}
+  [1m[35mDoi Load (0.2ms)[0m  SELECT  "dois".* FROM "dois"  WHERE "dois"."id" = ? LIMIT 1  [["id", 15]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUrl Load (0.1ms)[0m  SELECT "urls".* FROM "urls"  WHERE "urls"."doi_id" = ?  [["doi_id", 15]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "dois" WHERE "dois"."id" = ?[0m  [["id", 15]]
+  [1m[35m (7.3ms)[0m  commit transaction
+Redirected to http://54.69.84.34:3000/dois
+Completed 302 Found in 14ms (ActiveRecord: 7.9ms)
+
+
+Started GET "/dois" for 132.241.217.240 at 2014-10-27 20:30:55 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.1ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 26ms (Views: 25.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 20:30:56 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.1ms)
+  Rendered dois/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 32ms (Views: 27.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 20:31:00 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"u86a4lp3rg", "name"=>"asdf", "description"=>"adfdsafa", "url"=>"sdfdss"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 20:31:00.945843"], ["description", "adfdsafa"], ["name", "asdf"], ["updated_at", "2014-10-27 20:31:00.945843"], ["url", "sdfdss"]]
+  [1m[35m (10.4ms)[0m  commit transaction
+Completed 500 Internal Server Error in 16ms
+
+NameError (undefined local variable or method `doi' for #<DoisController:0x00000006558d30>):
+  app/controllers/dois_controller.rb:30:in `create'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.0ms)
+
+
+Started GET "/" for 132.241.217.240 at 2014-10-27 20:31:17 +0000
+Processing by DoisController#index as HTML
+  [1m[36mDoi Load (0.3ms)[0m  [1mSELECT "dois".* FROM "dois"[0m
+  Rendered dois/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 33ms (Views: 29.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/dois/new" for 132.241.217.240 at 2014-10-27 20:31:19 +0000
+Processing by DoisController#new as HTML
+  Rendered dois/_form.html.erb (2.1ms)
+  Rendered dois/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 63ms (Views: 55.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/dois" for 132.241.217.240 at 2014-10-27 20:31:25 +0000
+Processing by DoisController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ekQQ4aPiC5eFe2AK8hXy34Z6WfCZXKjbS5Cixnf+bYc=", "doi"=>{"doi"=>"8t2s42p3l0", "name"=>"sdf", "description"=>"ffffff", "url"=>"sdsssssss"}, "commit"=>"Create Doi"}
+Unpermitted parameters: doi
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "dois" ("created_at", "description", "name", "updated_at", "url") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-27 20:31:25.837797"], ["description", "ffffff"], ["name", "sdf"], ["updated_at", "2014-10-27 20:31:25.837797"], ["url", "sdsssssss"]]
+  [1m[35m (5.2ms)[0m  commit transaction
+Completed 500 Internal Server Error in 9ms
+
+NoMethodError (undefined method `save' for "kmis283plg":String):
+  app/controllers/dois_controller.rb:29:in `create'
+
+
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.6ms)

@@ -26,6 +26,7 @@ class DoisController < ApplicationController
     @doi = Doi.new(doi_params)
 
     if @doi.save
+      @doi.doi = rand(2**50).to_s(32)
       redirect_to @doi, notice: 'Doi was successfully created.'
     else
       render :new
