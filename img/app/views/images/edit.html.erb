@@ -1,6 +1,16 @@
 <h1>Editing image</h1>
 
-<%= render 'form' %>
-
+<%= form_for(@image) do |f| %>
+ <%= image_tag root_url + "/images/" + @image.filename, size: "100x100", alt: @image.filename %>
+  <div class="field">
+    <%= f.label :Public %>
+    <%= f.radio_button :public, "1", :checked => (@image.public) %><br> Private
+    <%= f.radio_button :public, "0", :checked => (!@image.public) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<br>
 <%= link_to 'Show', @image %> |
 <%= link_to 'Back', images_path %>
