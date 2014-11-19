@@ -3,5 +3,17 @@
     background-color:#303030;
     color:white;
     text-align:center;
-    padding:4px;
+    padding: 4px 100px;
+    border-bottom: solid 5px #191919;
+}
+#stitched_element {
+border: 2px dashed  #ffffff;
+box-shadow: 0 0 0 8px #ff0030;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFF;
+  font-family: verdana;
+  font-size: 14px;
 }
