@@ -8,8 +8,12 @@
 </head>
 <body>
 
+<div id="header">
+<br>
+<strong><h1>Kong's Social Image Network</h1></strong>
+
 <div class="container">
-  <ul class="nav nav-tabs navbar-right">
+  <ul class="nav navbar-right">
     <div id="user_nav">
     <% if user_signed_in? %>
       Signed in as <%= current_user.email %>. Not you?
@@ -20,8 +24,9 @@
     <% end %>
   </ul>
    </div>
-<%= yield %>
 </div>
+</div>
+<%= yield %>
 
 </body>
 </html>
