@@ -21,8 +21,10 @@
           <td><%= image.public %></td>
           <td><%= image.user %></td>
           <td><%= link_to 'Show', image, class: 'btn btn-mini' %></td>
+          <% if current_user %>
           <td><%= link_to 'Edit', edit_image_path(image), class: 'btn btn-mini btn-success' %></td>
           <td><%= link_to 'Destroy', image, class: 'btn btn-mini btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
@@ -32,7 +34,8 @@
 </div>
 
 <br>
-
+<% if current_user %>
 <%= link_to 'New Image', new_image_path %>
+<% end %>
 <br>
 <br>
