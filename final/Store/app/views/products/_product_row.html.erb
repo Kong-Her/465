@@ -2,13 +2,14 @@
 
   <div class="row">
     <div class="col-xs-8">
-      <h4><%= product.name %></small></h4>
+      <h4><u><%= product.name %></u></small></h4>
       <h6><%= product.description %></small></h6>
     </div>
     <div class="product-card padly">
       
       <%= form_for order_item, remote: true do |f| %>
       <h4 class="text-left"> Price: <span style="color: green"><%= number_to_currency product.price %></span></h4>
+       <% if current_user %>
         <div class="input-group">
           <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
           <div class="input-group-btn">
@@ -16,6 +17,7 @@
             <%= f.submit "Add to Cart", class: "btn btn-primary" %>
           </div>
         </div>
+        <% end %>
       <% end %>
     </div>
     

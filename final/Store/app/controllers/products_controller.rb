@@ -26,11 +26,6 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    @uploaded_io = params[:product][:uploaded_file]
-
-    File.open(Rails.root.join('public', 'images', @product.image_filename), 'wb') do |file|
-        file.write(@uploaded_io.read)
-    end
 
     respond_to do |format|
       if @product.save
