@@ -14,6 +14,7 @@
  
       <section class="top-bar-section">
         <ul class="right">
+          <li><%= render 'layouts/search' %></li>
           <li><%=link_to "Register", "#" %></li>
           <li><%=link_to "Login", "#" %></li>
           <li><%= link_to "#{current_order.order_items.size} Items in Cart ( #{number_to_currency current_order.subtotal} )", cart_path, class: "btn btn-link" %></li>

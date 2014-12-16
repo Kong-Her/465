@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.search(params[:search])
     @order_item = current_order.order_items.new
   end
 
@@ -26,9 +26,9 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    @uploaded_io = params[:image][:uploaded_file]
+    @uploaded_io = params[:product][:uploaded_file]
 
-    File.open(Rails.root.join('public', 'images', @image.filename), 'wb') do |file|
+    File.open(Rails.root.join('public', 'images', @product.image_filename), 'wb') do |file|
         file.write(@uploaded_io.read)
     end
 

@@ -1,14 +1,14 @@
-<div class="well">
+<div class="large-4 medium-3 small-12 column">
 
   <div class="row">
     <div class="col-xs-8">
       <h4><%= product.name %></small></h4>
-      <h4><%= product.description %></small></h4>
+      <h6><%= product.description %></small></h6>
     </div>
-    <div class="col-xs-4">
+    <div class="product-card padly">
       
       <%= form_for order_item, remote: true do |f| %>
-      <h4 class="text-right"> Price: <span style="color: green"><%= number_to_currency product.price %></span></h4>
+      <h4 class="text-left"> Price: <span style="color: green"><%= number_to_currency product.price %></span></h4>
         <div class="input-group">
           <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
           <div class="input-group-btn">
@@ -21,3 +21,4 @@
     
   </div>
 </div>
+
