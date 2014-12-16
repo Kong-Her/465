@@ -1,0 +1,24 @@
+<div class="row">
+  <nav class="top-bar column" data-topbar>
+ 
+      <ul class="title-area">
+        <li class="name">
+          <h1>
+            <a href="/">
+             Store
+            </a>
+          </h1>
+        </li>
+        <li class="toggle-topbar"><a href="#"><span>Menu</span></a></li>
+      </ul>
+ 
+      <section class="top-bar-section">
+        <ul class="right">
+          <li><%=link_to "Register", "#" %></li>
+          <li><%=link_to "Login", "#" %></li>
+          <li><%= link_to "#{current_order.order_items.size} Items in Cart ( #{number_to_currency current_order.subtotal} )", cart_path, class: "btn btn-link" %></li>
+        </ul>
+      </section>
+ 
+    </nav>
+</div>

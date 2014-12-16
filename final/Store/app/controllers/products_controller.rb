@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @order_item = current_order.order_items.new
   end
 
   # GET /products/1
@@ -25,6 +26,11 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    @uploaded_io = params[:image][:uploaded_file]
+
+    File.open(Rails.root.join('public', 'images', @image.filename), 'wb') do |file|
+        file.write(@uploaded_io.read)
+    end
 
     respond_to do |format|
       if @product.save

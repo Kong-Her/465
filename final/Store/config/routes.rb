@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
+ # get 'order_items/create'
+
+ # get 'order_items/update'
+
+ # get 'order_items/destroy'
+
+  #get 'carts/show'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :categories
-
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
   resources :products
   root 'products#index'
 
